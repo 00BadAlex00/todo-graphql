@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component "Todos" matches snapshot with data 1`] = `
+<ul
+  className="todo-list"
+>
+  <li
+    className="todo completed"
+  >
+    <div
+      className="view"
+    >
+      <input
+        checked={true}
+        className="toggle"
+        disabled={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
+      <label>
+        title
+      </label>
+      <button
+        className="destroy"
+        onClick={[Function]}
+      />
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`component "Todos" matches snapshot with error 1`] = `
+<p
+  className="loading-error"
+>
+  Error :(
+</p>
+`;
+
+exports[`component "Todos" matches snapshot with loading 1`] = `
+<div
+  className="todos-container"
+>
+  <p
+    className="loading"
+  >
+    Loading...
+  </p>
+</div>
+`;

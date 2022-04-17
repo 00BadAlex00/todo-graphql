@@ -1,0 +1,9 @@
+.DS_Store
+.idea/
+.vscode/
+.env.local
+node_modules/
+package-lock.json
+.env
+.eslintcache
+.vscode
