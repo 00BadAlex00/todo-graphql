@@ -5,7 +5,9 @@ import * as updateFunctions from '../../../updateFunctions'
 import { UPDATE_TODO, REMOVE_TODO } from '../../../mutations'
 import Loading from '../../shared/Loading'
 
-const TodoItem = ({ todo: { id, completed, title } }) => {
+interface TodoItemProps extends Todo { };
+
+const TodoItem = ({ id, completed, title }: TodoItemProps) => {
   const [removeTodo, { loading }] = useMutation(REMOVE_TODO, {
     update: updateFunctions.removeTodo
   })
@@ -24,7 +26,7 @@ const TodoItem = ({ todo: { id, completed, title } }) => {
           type="checkbox"
           className="toggle"
           checked={completed}
-          onChange={toggleTodo}
+          onChange={toggleTodo as React.ChangeEventHandler}
           disabled={toggleLoading}
         />
         <label>{title}</label>

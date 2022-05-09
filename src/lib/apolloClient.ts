@@ -8,7 +8,7 @@ import {
 import { onError } from "@apollo/client/link/error";
 
 const operationNameLink = new ApolloLink((operation, forward) => {
-  operation.setContext(({ headers }) => ({
+  operation.setContext(({ headers = {} }) => ({
     headers: {
       'x-gql-operation-name': operation.operationName,
       ...headers,
@@ -18,10 +18,10 @@ const operationNameLink = new ApolloLink((operation, forward) => {
 })
 
 const loggerLink = new ApolloLink((operation, forward) => {
-  const time = new Date();
+  const time = +new Date();
 
   return forward(operation).map((data) => {
-    console.log(`${operation.operationName} (${new Date() - time} ms)`);
+    console.log(`${operation.operationName} (${+new Date() - time} ms)`);
     return data;
   })
 })
@@ -41,8 +41,5 @@ const httpLink = new HttpLink({ uri: 'http://localhost:3001' })
 
 export const client = new ApolloClient({
   link: from([errorLink, operationNameLink, loggerLink, httpLink]),
-  fetchOptions: {
-    mode: 'no-cors',
-  },
   cache: new InMemoryCache(),
 })
